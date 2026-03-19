@@ -6,6 +6,9 @@ Java Script
 https://data.winnipeg.ca/resource/hfwk-jp4h.json
 */
 
+const searchButton = document.getElementById("searchButton")
+const searchBar = document.getElementById("search")
+
 async function getTrees(){
     try{
         const response = await fetch("https://data.winnipeg.ca/resource/hfwk-jp4h.json?$where=park='St. Vital Park'&$limit=25")
@@ -39,8 +42,10 @@ async function searchPark(park_name){
 }
 
 async function listTrees(){
-    const trees = await getTrees()
+    const trees = await searchPark(searchBar.value)
     console.log(trees)
 }
 
-listTrees()
+searchButton.addEventListener("click", () => {
+    listTrees()
+})
