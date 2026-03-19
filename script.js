@@ -8,7 +8,7 @@ https://data.winnipeg.ca/resource/hfwk-jp4h.json
 
 async function getTrees(){
     try{
-        const response = await fetch("https://data.winnipeg.ca/resource/hfwk-jp4h.json")
+        const response = await fetch("https://data.winnipeg.ca/resource/hfwk-jp4h.json?$where=park='St. Vital Park'&$limit=25")
 
         if (!response.ok){
             throw new Error(`HTTP Error! status: ${response.status}`)
