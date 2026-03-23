@@ -64,9 +64,12 @@ const createTreeInfoBox = ( (commonName, treeName, treeId, treeWard) => {
     treeContainer.className = "treeContainer"
 }) 
 
-
 const removeTreeInfoBoxes = ( () => {
-    boxList = document.querySelector("treeContainer")
+    boxList = document.getElementsByClassName("treeContainer")
+
+    for(const box of boxList){
+        box.remove()
+    }
 } )
 
 async function listTrees(){
@@ -79,5 +82,6 @@ async function listTrees(){
 }
 
 searchButton.addEventListener("click", () => {
+    removeTreeInfoBoxes()
     listTrees()
 })
