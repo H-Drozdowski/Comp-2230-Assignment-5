@@ -3,6 +3,9 @@
     Assignment 5
     Java Script
     https://data.winnipeg.ca/resource/hfwk-jp4h.json
+
+
+    !!! ADD CODE TO REMOVE OLD ONES WHEN SEARCHING AGAIN!!!
 */
 
 const searchButton = document.getElementById("searchButton")
@@ -61,6 +64,10 @@ const createTreeInfoBox = ( (commonName, treeName, treeId, treeWard) => {
     treeContainer.className = "treeContainer"
 }) 
 
+
+const removeTreeInfoBoxes = ( () => {
+    boxList = document.querySelector("treeContainer")
+} )
 
 async function listTrees(){
     const trees = await searchPark(searchBar.value)
