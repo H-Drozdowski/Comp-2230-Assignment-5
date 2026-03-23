@@ -43,22 +43,25 @@ async function searchPark(park_name){
     }
 }
 
-const createTreeInfoBox = ( (commonName, treeName, treeId, treeWard) => {
+const createTreeInfoBox = ( (commonName, treeName, treeId, treeWard, treePark) => {
     const treeContainer = document.createElement("div")
     const treeType = document.createElement("p")
     const commonTreeName = document.createElement("p")
     const treeIdPar = document.createElement("p")
     const treeWardPar = document.createElement("p")
+    const treeParkPar = document.createElement("p")
 
     treeType.textContent = `Botanical Name:  ${treeName}`
     commonTreeName.textContent = `Common Name:  ${commonName}`
     treeIdPar.textContent = `Tree ID:  ${treeId}`
     treeWardPar.textContent = `Tree Electoral Ward:  ${treeWard}`
+    treeParkPar.textContent = `Park located: ${treePark}`
 
     treeContainer.append(treeIdPar)
     treeContainer.append(commonTreeName)
     treeContainer.append(treeType)
     treeContainer.append(treeWardPar)
+    treeContainer.append(treeParkPar)
     document.body.append(treeContainer)
 
     treeContainer.className = "treeContainer"
@@ -67,8 +70,8 @@ const createTreeInfoBox = ( (commonName, treeName, treeId, treeWard) => {
 const removeTreeInfoBoxes = ( () => {
     boxList = document.getElementsByClassName("treeContainer")
 
-    for(const box of boxList){
-        box.remove()
+    while (boxList.length > 0){
+        boxList[0].remove()
     }
 } )
 
@@ -77,7 +80,8 @@ async function listTrees(){
     console.log(trees)
 
     for (const tree of trees){
-        createTreeInfoBox(tree["common_name"], tree["botanical_name"], tree["tree_id"], tree["electoral_ward"])
+        createTreeInfoBox(tree["common_name"], tree["botanical_name"],
+             tree["tree_id"], tree["electoral_ward"], tree["park"])
     }
 }
 
