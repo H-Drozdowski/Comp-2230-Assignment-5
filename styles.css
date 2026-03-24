@@ -1,0 +1,30 @@
+/*
+    Hudson Drozdowski
+    Assignment 5 CSS
+
+    Color Scheme:
+        Brown: 119, 53, 53
+        Green: 0, 90, 0, 0.281
+        Black
+*/
+
+.treeContainer{
+    border: 2px black solid;
+    margin: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    
+}
+
+header{
+    background-color: rgb(119, 53, 53);
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.treeContainer{
+    background-color: rgba(0, 90, 0, 0.281);
+}
