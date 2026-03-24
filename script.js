@@ -3,13 +3,16 @@
     Assignment 5
     Java Script
     https://data.winnipeg.ca/resource/hfwk-jp4h.json
-
-
-    !!! ADD CODE TO REMOVE OLD ONES WHEN SEARCHING AGAIN!!!
 */
 
 const searchButton = document.getElementById("searchButton")
 const searchBar = document.getElementById("search")
+const svgList = [
+    "svgs/tree-4-svgrepo-com.svg", 
+    "svgs/tree-svgrepo-com (1).svg",
+    "svgs/tree-svgrepo-com (2).svg",
+    "svgs/tree-svgrepo-com.svg"
+]
 
 async function getTrees(){
     try{
@@ -22,7 +25,6 @@ async function getTrees(){
         return response.json()
     }
     catch(error){
-        // Logs the error message
         console.error("Failed to fetch park", error.message)
     }
 }
@@ -45,11 +47,13 @@ async function searchPark(park_name){
 
 const createTreeInfoBox = ( (commonName, treeName, treeId, treeWard, treePark) => {
     const treeContainer = document.createElement("div")
+    const treeInfoContainer = document.createElement("div")
     const treeType = document.createElement("p")
     const commonTreeName = document.createElement("p")
     const treeIdPar = document.createElement("p")
     const treeWardPar = document.createElement("p")
     const treeParkPar = document.createElement("p")
+    const treeSVG = document.createElement("img")
 
     treeType.textContent = `Botanical Name:  ${treeName}`
     commonTreeName.textContent = `Common Name:  ${commonName}`
@@ -57,11 +61,18 @@ const createTreeInfoBox = ( (commonName, treeName, treeId, treeWard, treePark) =
     treeWardPar.textContent = `Tree Electoral Ward:  ${treeWard}`
     treeParkPar.textContent = `Park located: ${treePark}`
 
-    treeContainer.append(treeIdPar)
-    treeContainer.append(commonTreeName)
-    treeContainer.append(treeType)
-    treeContainer.append(treeWardPar)
-    treeContainer.append(treeParkPar)
+    treeSVG.src = svgList[Math.floor(Math.random() * svgList.length)]
+    treeSVG.alt = "An image of a tree."
+    treeSVG.width = 100
+    treeSVG.ariaHidden = true
+
+    treeContainer.append(treeInfoContainer)
+    treeContainer.append(treeSVG)
+    treeInfoContainer.append(treeIdPar)
+    treeInfoContainer.append(commonTreeName)
+    treeInfoContainer.append(treeType)
+    treeInfoContainer.append(treeWardPar)
+    treeInfoContainer.append(treeParkPar)
     document.body.append(treeContainer)
 
     treeContainer.className = "treeContainer"
